@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.sortmynumber.databinding.FragmentSecondBinding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SecondFragment extends Fragment {
@@ -48,28 +49,30 @@ public class SecondFragment extends Fragment {
             }
 
             public void sendMessage(View view) {
-                // Do something in response to button
-                // Intent intent = new Intent(this, DisplayMessageActivity.class);
                 EditText editText = (EditText) getView().findViewById(R.id.editTextTextPersonName);
                 TextView textView1 = getView().findViewById(R.id.textView1);
-                // TextView myTextView = null;
-                // TextView myTextView = findViewById(R.id.textView);
+
 
                 try {
                     String myString = editText.getText().toString();
+
                     String[] myStringList = myString.split(" ");
-                    int[] numberList = new int[myStringList.length];
+
+                    ArrayList<Integer> numberArr = new ArrayList<Integer>();
+
                     for (int i = 0; i < myStringList.length; i++) {
-                        numberList[i] = Integer.parseInt(myStringList[i]);
+                        if (!myStringList[i].equals("")) {
+                            numberArr.add(Integer.parseInt(myStringList[i]));
+                        }
                     }
-                    String finalString = Arrays.toString(numberList).replaceAll("\\[|\\]|,|\\s", " ");
+                    Integer[] numberList = numberArr.toArray(new Integer[0]);
+                    String finalString = "Input Array: " +
+                            Arrays.toString(numberList).replaceAll("\\[|\\]|,|\\s", " ") + "\n"
+                            + "Insertion Sort (Intermediate Steps)";
                     int size = numberList.length;
                     for (int i = 1; i < size; i++) {
-                        // finalString = Arrays.toString(numberList);
-
                         int keyNum = numberList[i];
                         int j = i - 1;
-
                         while (j >= 0 && numberList[j] > keyNum) {
                             numberList[j + 1] = numberList[j];
                             j = j - 1;
@@ -77,30 +80,15 @@ public class SecondFragment extends Fragment {
                         numberList[j + 1] = keyNum;
                         finalString = finalString + "\n" + Arrays.toString(numberList).replaceAll("\\[|\\]|,|\\s", " ");
                     }
-
-//            String[] sortedString = new String[numberList.length];
-//            for (int i = 0; i < numberList.length; i++) {
-//                sortedString[i] = String.valueOf(numberList[i]);
-//            }
-
-                    //String finalString = String.join(" ", sortedString);
-//            String finalString = Arrays.toString(numberList);
-//            finalString = finalString + "\n" + "1 2 3";
                     textView1.setText(finalString);
-                    // intent.putExtra(EXTRA_MESSAGE,finalString);
-                    //  startActivity(intent);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                // myTextView = myTextView.setText(finalString);
-                //String message = myTextView.getText().toString();
 
             }
 
-
         });
-
-
 
     }
 
