@@ -48,12 +48,9 @@ public class SecondFragment extends Fragment {
             }
 
             public void sendMessage(View view) {
-                // Do something in response to button
-                // Intent intent = new Intent(this, DisplayMessageActivity.class);
                 EditText editText = (EditText) getView().findViewById(R.id.editTextTextPersonName);
                 TextView textView1 = getView().findViewById(R.id.textView1);
-                // TextView myTextView = null;
-                // TextView myTextView = findViewById(R.id.textView);
+
 
                 try {
                     String myString = editText.getText().toString();
@@ -65,7 +62,7 @@ public class SecondFragment extends Fragment {
                     String finalString = Arrays.toString(numberList).replaceAll("\\[|\\]|,|\\s", " ");
                     int size = numberList.length;
                     for (int i = 1; i < size; i++) {
-                        // finalString = Arrays.toString(numberList);
+
 
                         int keyNum = numberList[i];
                         int j = i - 1;
@@ -78,28 +75,18 @@ public class SecondFragment extends Fragment {
                         finalString = finalString + "\n" + Arrays.toString(numberList).replaceAll("\\[|\\]|,|\\s", " ");
                     }
 
-//            String[] sortedString = new String[numberList.length];
-//            for (int i = 0; i < numberList.length; i++) {
-//                sortedString[i] = String.valueOf(numberList[i]);
-//            }
-
-                    //String finalString = String.join(" ", sortedString);
-//            String finalString = Arrays.toString(numberList);
-//            finalString = finalString + "\n" + "1 2 3";
+//
                     textView1.setText(finalString);
-                    // intent.putExtra(EXTRA_MESSAGE,finalString);
-                    //  startActivity(intent);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                // myTextView = myTextView.setText(finalString);
-                //String message = myTextView.getText().toString();
+
 
             }
 
 
         });
-
 
 
     }
