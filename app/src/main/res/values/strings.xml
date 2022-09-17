@@ -2,14 +2,15 @@
     <string name="app_name">Sort My Number</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
+    <string name="first_fragment_label">Sort My Number</string>
     <string name="second_fragment_label">Insertion Sort</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="next">Begin Sorting!!!</string>
+    <string name="exitButton">Exit</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_first_fragment">Hello,Welcome to the Sort My Number! We Will help you sort your numbers using insertion sort.Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part which has the time complexity of O(n^2).(source:Wikipedia)</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="edit_message"></string>
+    <string name="editInput"></string>
     <string name="button_sort">Sort</string>
+    <string name="clearButton">Clear</string>
 
 </resources>
