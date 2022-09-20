@@ -118,7 +118,7 @@ public class SecondFragment extends Fragment {
 
             public String numberSorting(Integer[] numberArr) {
                 String finalString = "Input Array: " +
-                        Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ") + "\n"
+                        Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ") + "\n\n"
                         + "Insertion Sort (Intermediate Steps)";
                 int size = numberArr.length;
                 for (int i = 1; i < size; i++) {
@@ -129,7 +129,8 @@ public class SecondFragment extends Fragment {
                         j = j - 1;
                     }
                     numberArr[j + 1] = keyNum;
-                    finalString = finalString + "\n" + Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
+                    finalString =  finalString + "\n\t\t\t\t\t\t\t\t\t\tStep"+"\t"+ i +":"
+                            +Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
                 }
                 return finalString;
             }
