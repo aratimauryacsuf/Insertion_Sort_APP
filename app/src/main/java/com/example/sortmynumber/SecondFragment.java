@@ -47,7 +47,7 @@ public class SecondFragment extends Fragment {
 
             public void exitApp(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-              //  builder.setTitle("Exit Message");
+                //  builder.setTitle("Exit Message");
                 builder.setMessage("Do you want to exit the app?");
                 builder.setPositiveButton("Yes. Exit now!", new DialogInterface.OnClickListener() {
                     @Override
@@ -93,10 +93,10 @@ public class SecondFragment extends Fragment {
         binding.sortButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendMessage(view);
+                beginSorting(view);
             }
 
-            public void sendMessage(View view) {
+            public void beginSorting(View view) {
                 EditText editText = (EditText) getView().findViewById(R.id.inputEditText);
                 TextView textView1 = getView().findViewById(R.id.textView1);
 
@@ -119,18 +119,20 @@ public class SecondFragment extends Fragment {
             public String numberSorting(Integer[] numberArr) {
                 String finalString = "Input Array: " +
                         Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ") + "\n\n"
-                        + "Insertion Sort (Intermediate Steps)";
+                        + "Insertion Sort (Intermediate Steps)"
+                        + "\n\t\t\t\t\t\t\t\t\t\tStep" + "\t" + 1 + ":"
+                        + Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
                 int size = numberArr.length;
                 for (int i = 1; i < size; i++) {
                     int keyNum = numberArr[i];
-                    int j = i - 1;
-                    while (j >= 0 && numberArr[j] > keyNum) {
+                    int j;
+                    for (j = i - 1; j >= 0 && numberArr[j] > keyNum; j--) {
                         numberArr[j + 1] = numberArr[j];
-                        j = j - 1;
+
                     }
                     numberArr[j + 1] = keyNum;
-                    finalString =  finalString + "\n\t\t\t\t\t\t\t\t\t\tStep"+"\t"+ i +":"
-                            +Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
+                    finalString = finalString + "\n\t\t\t\t\t\t\t\t\t\tStep" + "\t" + (i + 1) + ":"
+                            + Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
                 }
                 return finalString;
             }
