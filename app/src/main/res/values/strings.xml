@@ -12,5 +12,7 @@
     <string name="editInput"></string>
     <string name="button_sort">Sort</string>
     <string name="clearButton">Clear</string>
+    <string name="cardImageDescription">Cards held in hand</string>
+    <string name="about_app">Welcome! We Will help you sort your numbers using insertion sort.Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands.</string>
 
 </resources>
