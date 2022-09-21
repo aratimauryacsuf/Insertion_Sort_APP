@@ -1,10 +1,12 @@
 package com.example.sortmynumber;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -39,8 +41,7 @@ public class SecondFragment extends Fragment {
         binding.exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //               NavHostFragment.findNavController(SecondFragment.this)
-//                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+
                 exitApp(view);
 
             }
@@ -109,6 +110,8 @@ public class SecondFragment extends Fragment {
                     String finalString = numberSorting(numberArr);
 
                     textView1.setText(finalString);
+                    hideKeyboard(view);
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -116,11 +119,17 @@ public class SecondFragment extends Fragment {
 
             }
 
+            public void hideKeyboard(View view) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+
             public String numberSorting(Integer[] numberArr) {
+                int step = 1;
                 String finalString = "Input Array: " +
                         Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ") + "\n\n"
                         + "Insertion Sort (Intermediate Steps)"
-                        + "\n\t\t\t\t\t\t\t\t\t\tStep" + "\t" + 1 + ":"
+                        + "\n\t\t\t\t\t\t\t\t\t\tStep" + "\t" + step + " : "
                         + Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
                 int size = numberArr.length;
                 for (int i = 1; i < size; i++) {
@@ -131,7 +140,8 @@ public class SecondFragment extends Fragment {
 
                     }
                     numberArr[j + 1] = keyNum;
-                    finalString = finalString + "\n\t\t\t\t\t\t\t\t\t\tStep" + "\t" + (i + 1) + ":"
+                    step = i + 1;
+                    finalString = finalString + "\n\t\t\t\t\t\t\t\t\t\tStep" + "\t" + step + " : "
                             + Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
                 }
                 return finalString;
