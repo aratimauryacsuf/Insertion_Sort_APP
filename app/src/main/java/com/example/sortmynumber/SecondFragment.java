@@ -48,9 +48,9 @@ public class SecondFragment extends Fragment {
 
             public void exitApp(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                //  builder.setTitle("Exit Message");
+
                 builder.setMessage("Do you want to exit the app?");
-                builder.setPositiveButton("Yes. Exit now!", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Yes, Exit now!", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -194,8 +194,6 @@ public class SecondFragment extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Alert");
                 builder.setMessage(message);
-
-                // add a button
                 builder.setPositiveButton("OK", null);
 
                 // create and show the alert dialog
