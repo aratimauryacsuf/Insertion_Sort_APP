@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="mustard">#e1ad01</color>
+    <color name="brown">#D7C0AE</color>
+    <color name="cream">#F8EDE3</color>
+
+    <color name="darkCream">#E9DAC1</color>
 </resources>

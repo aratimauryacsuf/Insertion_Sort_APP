@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/teal_700"
+            android:background="@color/brown"
             app:popupTheme="@style/Theme.SortMyNumber.PopupOverlay"
             app:subtitleTextColor="#090808"
             app:titleTextColor="#070707" />
