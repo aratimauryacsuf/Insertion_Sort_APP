@@ -4,53 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#009688"
     tools:context=".FirstFragment">
 
     <Button
         android:id="@+id/button_first"
         android:layout_width="188dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="228dp"
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.406"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="168dp"
-        android:layout_height="163dp"
-        android:contentDescription="@string/cardImageDescription"
-        android:src="@drawable/whatsapp_image_2022_09_20_at_11_06_46"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="376dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="240dp"
+        android:layout_width="274dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="192dp"
+        android:fontFamily="@font/aguafina_script"
         android:text="@string/first_fragment_label"
+        android:textColor="#101013"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="390dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="324dp"
+        android:layout_width="377dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="304dp"
+        android:fontFamily="sans-serif-black"
         android:text="@string/about_app"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
