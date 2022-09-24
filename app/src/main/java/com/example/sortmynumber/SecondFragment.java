@@ -1,10 +1,12 @@
 package com.example.sortmynumber;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -39,17 +41,16 @@ public class SecondFragment extends Fragment {
         binding.exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //               NavHostFragment.findNavController(SecondFragment.this)
-//                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+
                 exitApp(view);
 
             }
 
             public void exitApp(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-              //  builder.setTitle("Exit Message");
+
                 builder.setMessage("Do you want to exit the app?");
-                builder.setPositiveButton("Yes. Exit now!", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Yes, Exit now!", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -93,10 +94,10 @@ public class SecondFragment extends Fragment {
         binding.sortButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendMessage(view);
+                beginSorting(view);
             }
 
-            public void sendMessage(View view) {
+            public void beginSorting(View view) {
                 EditText editText = (EditText) getView().findViewById(R.id.inputEditText);
                 TextView textView1 = getView().findViewById(R.id.textView1);
 
@@ -109,6 +110,8 @@ public class SecondFragment extends Fragment {
                     String finalString = numberSorting(numberArr);
 
                     textView1.setText(finalString);
+                    hideKeyboard(view);
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -116,21 +119,30 @@ public class SecondFragment extends Fragment {
 
             }
 
+            public void hideKeyboard(View view) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+
             public String numberSorting(Integer[] numberArr) {
+                int step = 1;
                 String finalString = "Input Array: " +
                         Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ") + "\n\n"
-                        + "Insertion Sort (Intermediate Steps)";
+                        + "Insertion Sort (Intermediate Steps)"
+                        + "\n\t\t\t\t\t\t\t\t\t\tStep" + "\t" + step + " : "
+                        + Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
                 int size = numberArr.length;
                 for (int i = 1; i < size; i++) {
                     int keyNum = numberArr[i];
-                    int j = i - 1;
-                    while (j >= 0 && numberArr[j] > keyNum) {
+                    int j;
+                    for (j = i - 1; j >= 0 && numberArr[j] > keyNum; j--) {
                         numberArr[j + 1] = numberArr[j];
-                        j = j - 1;
+
                     }
                     numberArr[j + 1] = keyNum;
-                    finalString =  finalString + "\n\t\t\t\t\t\t\t\t\t\tStep"+"\t"+ i +":"
-                            +Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
+                    step = i + 1;
+                    finalString = finalString + "\n\t\t\t\t\t\t\t\t\t\tStep" + "\t" + step + " : "
+                            + Arrays.toString(numberArr).replaceAll("\\[|\\]|,|\\s", " ");
                 }
                 return finalString;
             }
@@ -182,8 +194,6 @@ public class SecondFragment extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Alert");
                 builder.setMessage(message);
-
-                // add a button
                 builder.setPositiveButton("OK", null);
 
                 // create and show the alert dialog
